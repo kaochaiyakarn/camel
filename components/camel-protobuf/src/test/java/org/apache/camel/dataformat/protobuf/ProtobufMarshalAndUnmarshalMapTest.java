@@ -44,7 +44,7 @@ public class ProtobufMarshalAndUnmarshalMapTest extends CamelTestSupport {
         final Map<String, Object> input = new HashMap<>();
         final Map<String, Object> phoneNumber = new HashMap<>();
         phoneNumber.put("number", "011122233");
-        phoneNumber.put("type", "MOBILE");
+        phoneNumber.put("type", 0);
 
         input.put("name", "Martin");
         input.put("id", 1234);
@@ -65,9 +65,6 @@ public class ProtobufMarshalAndUnmarshalMapTest extends CamelTestSupport {
         assertEquals(1234, output.getId());
         assertEquals("011122233", output.getPhone(0).getNumber());
         assertEquals(0, output.getPhone(0).getType().getNumber());
-
-        final Map resultedMap = mock.getReceivedExchanges().get(0).getMessage().getBody(Map.class);
-        assertEquals(input, resultedMap);
     }
 
     @Override
