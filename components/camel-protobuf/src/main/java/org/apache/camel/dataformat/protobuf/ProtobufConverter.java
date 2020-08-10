@@ -31,9 +31,6 @@ import org.apache.camel.util.ObjectHelper;
 
 public final class ProtobufConverter {
 
-    private ProtobufConverter() {
-    }
-
     public static Message toProto(final Map<?, ?> inputData, final Message defaultInstance) {
         ObjectHelper.notNull(inputData, "inputData");
         ObjectHelper.notNull(defaultInstance, "defaultInstance");
