@@ -53,7 +53,8 @@ public class ProtobufConverterTest {
         input.put("nicknames", Arrays.asList("awesome1", "awesome2"));
         input.put("address", address);
 
-        final AddressBookProtos.Person message = (AddressBookProtos.Person) ProtobufConverter.toProto(input, AddressBookProtos.Person.getDefaultInstance());
+        final ProtobufConverter protobufConverter = ProtobufConverter.create(AddressBookProtos.Person.getDefaultInstance());
+        final AddressBookProtos.Person message = (AddressBookProtos.Person) protobufConverter.toProto(input);
 
         // assert primitives types and strings
         assertEquals("Martin", message.getName());
@@ -83,8 +84,13 @@ public class ProtobufConverterTest {
         input.put("id", 1234);
         input.put("address", "wrong address");
 
+<<<<<<< HEAD
         assertThrows(IllegalArgumentException.class,
             () -> ProtobufConverter.toProto(input, AddressBookProtos.Person.getDefaultInstance()));
+=======
+        final ProtobufConverter protobufConverter = ProtobufConverter.create(AddressBookProtos.Person.getDefaultInstance());
+        final AddressBookProtos.Person message = (AddressBookProtos.Person) protobufConverter.toProto(input);
+>>>>>>> parent of 6c2fceb0c17... CAMEL-14192: Add toMap in the protobuf data format
     }
 
     @Test
@@ -95,6 +101,7 @@ public class ProtobufConverterTest {
         input.put("id", 1234);
         input.put("nicknames", "wrong nickname");
 
+<<<<<<< HEAD
         assertThrows(IllegalArgumentException.class,
             () -> ProtobufConverter.toProto(input, AddressBookProtos.Person.getDefaultInstance()));
     }
@@ -129,6 +136,10 @@ public class ProtobufConverterTest {
 
         assertEquals(input, resultedMessageMap);
 
+=======
+        final ProtobufConverter protobufConverter = ProtobufConverter.create(AddressBookProtos.Person.getDefaultInstance());
+        final AddressBookProtos.Person message = (AddressBookProtos.Person) protobufConverter.toProto(input);
+>>>>>>> parent of 6c2fceb0c17... CAMEL-14192: Add toMap in the protobuf data format
     }
 
 }
