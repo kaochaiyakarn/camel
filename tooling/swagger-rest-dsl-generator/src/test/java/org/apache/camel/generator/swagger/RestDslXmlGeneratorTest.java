@@ -69,6 +69,7 @@ public class RestDslXmlGeneratorTest {
         final String expectedContent = new String(Files.readAllBytes(Paths.get(file)), StandardCharsets.UTF_8);
 
         assertThat(xml).isXmlEqualTo(expectedContent);
+        assertThat(xml).isNotEmpty();
     }
 
     @Test
@@ -82,6 +83,7 @@ public class RestDslXmlGeneratorTest {
         final String expectedContent = new String(Files.readAllBytes(Paths.get(file)), StandardCharsets.UTF_8);
 
         assertThat(xml).isXmlEqualTo(expectedContent);
+        assertThat(xml).isNotEmpty();
     }
 
 }
