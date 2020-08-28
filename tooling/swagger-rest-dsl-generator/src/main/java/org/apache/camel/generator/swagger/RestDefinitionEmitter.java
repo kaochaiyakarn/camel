@@ -36,32 +36,6 @@ class RestDefinitionEmitter implements CodeEmitter<RestsDefinition> {
         variable = definition;
     }
 
-    @Override
-    public CodeEmitter<RestsDefinition> emit(final String method, final Object... args) {
-        try {
-            final Class<? extends Object> type = variable.getClass();
-
-            final Object[] arguments = argumentsFor(args);
-
-            final Method declaredMethod = type.getMethod(method, parameterTypesOf(arguments));
-
-            variable = declaredMethod.invoke(variable, arguments);
-        } catch (final Throwable e) {
-            if (e instanceof RuntimeException) {
-                throw (RuntimeException) e;
-            } else {
-                throw new IllegalStateException(e);
-            }
-        }
-
-        return this;
-    }
-
-    @Override
-    public RestsDefinition result() {
-        return definition;
-    }
-
     Object[] argumentsFor(final Object[] args) {
         final List<Object> arguments = new ArrayList<>(args.length);
 

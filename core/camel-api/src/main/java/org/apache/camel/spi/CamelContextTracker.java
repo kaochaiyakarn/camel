@@ -91,27 +91,5 @@ public class CamelContextTracker implements Closeable {
         TRACKERS.remove(this);
     }
 
-    public static synchronized void notifyContextCreated(CamelContext camelContext) {
-        for (CamelContextTracker tracker : TRACKERS) {
-            try {
-                if (tracker.accept(camelContext)) {
-                    tracker.contextCreated(camelContext);
-                }
-            } catch (Exception e) {
-                LOG.warn("Error calling CamelContext tracker. This exception is ignored.", e);
-            }
-        }
-    }
-
-    public static synchronized void notifyContextDestroyed(CamelContext camelContext) {
-        for (CamelContextTracker tracker : TRACKERS) {
-            try {
-                if (tracker.accept(camelContext)) {
-                    tracker.contextDestroyed(camelContext);
-                }
-            } catch (Exception e) {
-                LOG.warn("Error calling CamelContext tracker. This exception is ignored.", e);
-            }
-        }
-    }
+    
 }

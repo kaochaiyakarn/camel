@@ -100,18 +100,6 @@ public abstract class RestDslSourceCodeGenerator<T> extends RestDslGenerator<Res
 
         final MethodBodySourceCodeEmitter emitter = new MethodBodySourceCodeEmitter(configure);
 
-        if (restComponent != null) {
-            configure.addCode("\n");
-            configure.addCode("restConfiguration().component(\"" + restComponent + "\")");
-            if (restContextPath != null) {
-                configure.addCode(".contextPath(\"" + restContextPath + "\")");
-            }
-            if (ObjectHelper.isNotEmpty(apiContextPath)) {
-                configure.addCode(".apiContextPath(\"" + apiContextPath + "\")");
-            }
-            configure.addCode(";\n\n");
-        }
-
         final PathVisitor<MethodSpec> restDslStatement = new PathVisitor<>(swagger.getBasePath(), emitter, filter, destinationGenerator());
         swagger.getPaths().forEach(restDslStatement::visit);
 

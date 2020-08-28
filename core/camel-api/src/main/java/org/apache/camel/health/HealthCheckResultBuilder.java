@@ -98,46 +98,6 @@ public final class HealthCheckResultBuilder implements Builder<HealthCheck.Resul
         return state(HealthCheck.State.UNKNOWN);
     }
 
-    @Override
-    public HealthCheck.Result build() {
-        // Validation
-        ObjectHelper.notNull(this.state, "Response State");
-
-        final HealthCheck.State responseState = this.state;
-        final Optional<String> responseMessage = Optional.ofNullable(this.message);
-        final Optional<Throwable> responseError = Optional.ofNullable(this.error);
-        final Map<String, Object> responseDetails = HealthCheckResultBuilder.this.details != null
-            ? Collections.unmodifiableMap(new HashMap<>(HealthCheckResultBuilder.this.details))
-            : Collections.emptyMap();
-
-        return new HealthCheck.Result() {
-            @Override
-            public HealthCheck getCheck() {
-                return check;
-            }
-
-            @Override
-            public HealthCheck.State getState() {
-                return responseState;
-            }
-
-            @Override
-            public Optional<String> getMessage() {
-                return responseMessage;
-            }
-
-            @Override
-            public Optional<Throwable> getError() {
-                return responseError;
-            }
-
-            @Override
-            public Map<String, Object> getDetails() {
-                return responseDetails;
-            }
-        };
-    }
-
     public static HealthCheckResultBuilder on(HealthCheck check) {
         return new HealthCheckResultBuilder(check);
     }

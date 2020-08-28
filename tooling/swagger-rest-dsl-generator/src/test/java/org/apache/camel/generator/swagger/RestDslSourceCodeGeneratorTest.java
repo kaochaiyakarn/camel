@@ -85,20 +85,4 @@ public class RestDslSourceCodeGeneratorTest {
             .isEqualTo(RestDslSourceCodeGenerator.DEFAULT_PACKAGE_NAME);
     }
 
-    @Test
-    public void shouldUseDefaultPackageNameForLocalhostWithPort() {
-        final Swagger swagger = new Swagger();
-        swagger.setHost("localhost:8080");
-
-        assertThat(RestDslSourceCodeGenerator.generatePackageName(swagger))
-            .isEqualTo(RestDslSourceCodeGenerator.DEFAULT_PACKAGE_NAME);
-    }
-
-    @Test
-    public void shouldUseDefaultPackageNameIfNoHostIsSpecified() {
-        final Swagger swagger = new Swagger();
-
-        assertThat(RestDslSourceCodeGenerator.generatePackageName(swagger))
-            .isEqualTo(RestDslSourceCodeGenerator.DEFAULT_PACKAGE_NAME);
-    }
 }

@@ -28,11 +28,5 @@ final class PathGenerator extends RestDslSourceCodeGenerator<Path> {
         super(swagger);
     }
 
-    @Override
-    public void generate(final Path destination) throws IOException {
-        final JavaFile javaFile = generateSourceCode();
-
-        javaFile.writeTo(destination);
-    }
 
 }

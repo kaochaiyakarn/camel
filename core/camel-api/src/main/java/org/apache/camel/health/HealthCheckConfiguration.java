@@ -107,24 +107,6 @@ public class HealthCheckConfiguration implements Cloneable {
         private Builder() {
         }
 
-        public Builder complete(HealthCheckConfiguration template) {
-            if (template != null) {
-                if (this.parent == null) {
-                    this.parent = template.parent;
-                }
-                if (this.enabled == null) {
-                    this.enabled = template.enabled;
-                }
-                if (this.interval == null) {
-                    this.interval = template.interval;
-                }
-                if (this.failureThreshold == null) {
-                    this.failureThreshold = template.failureThreshold;
-                }
-            }
-
-            return this;
-        }
 
         public Builder parent(String parent) {
             this.parent = parent;
@@ -157,22 +139,6 @@ public class HealthCheckConfiguration implements Cloneable {
             return this;
         }
 
-        @Override
-        public HealthCheckConfiguration build() {
-            HealthCheckConfiguration conf = new HealthCheckConfiguration();
-            if (parent != null) {
-                conf.setParent(parent);
-            }
-            if (enabled != null) {
-                conf.setEnabled(enabled);
-            }
-            if (interval != null) {
-                conf.setInterval(interval);
-            }
-            if (failureThreshold != null) {
-                conf.setFailureThreshold(failureThreshold);
-            }
-            return conf;
-        }
+
     }
 }

@@ -27,39 +27,4 @@ public class LanguageValidationResult implements Serializable {
     private String shortError;
     private int index;
 
-    public LanguageValidationResult(String text) {
-        this.text = text;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public boolean isSuccess() {
-        return error == null;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public String getShortError() {
-        return shortError;
-    }
-
-    public void setShortError(String shortError) {
-        this.shortError = shortError;
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
 }

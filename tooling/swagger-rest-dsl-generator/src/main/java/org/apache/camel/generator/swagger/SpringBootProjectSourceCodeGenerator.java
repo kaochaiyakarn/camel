@@ -77,29 +77,6 @@ public class SpringBootProjectSourceCodeGenerator {
         return JavaFile.builder(packageName, generatedRestController).indent(indent).build();
     }
 
-    MethodSpec generateRestMethod() {
-        ClassName req = ClassName.bestGuess("javax.servlet.http.HttpServletRequest");
-        ClassName res = ClassName.bestGuess("javax.servlet.http.HttpServletResponse");
-
-        final AnnotationSpec.Builder reqAnnotation = AnnotationSpec.builder(ClassName.bestGuess("org.springframework.web.bind.annotation.RequestMapping"))
-            .addMember("value", "\"/**\"");
-
-        final MethodSpec.Builder forward = MethodSpec.methodBuilder("camelServlet").addModifiers(Modifier.PUBLIC)
-            .addParameter(req, "request")
-            .addParameter(res, "response")
-            .addAnnotation(reqAnnotation.build())
-            .returns(void.class);
-
-        forward.addCode("try {\n");
-        forward.addCode("    String path = request.getRequestURI();\n");
-        forward.addCode("    String camelPrefix = (path != null && path.startsWith(\"/\")) ? \"/camel\" : \"/camel/\";\n");
-        forward.addCode("    request.getServletContext().getRequestDispatcher(camelPrefix + path).forward(request, response);\n");
-        forward.addCode("} catch (Exception e) {\n");
-        forward.addCode("    response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);\n");
-        forward.addCode("}\n");
-
-        return forward.build();
-    }
 
     public static SpringBootProjectSourceCodeGenerator generator() {
         return new SpringBootProjectSourceCodeGenerator();

@@ -84,61 +84,10 @@ final class ComponentVerifierExtensionHelper {
             this.name = name;
         }
 
-        @Override
-        public String name() {
-            return name;
-        }
 
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (!(o instanceof Attribute)) {
-                return false;
-            }
-
-            Attribute that = (Attribute) o;
-
-            return name.equals(that.name());
-        }
-
-        @Override
-        public int hashCode() {
-            return name.hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return name();
-        }
     }
 
     // ===========================================================================================================
     // Helper classes for implementing the constants in ComponentVerifier:
 
-    static class StandardErrorCode extends ErrorCode implements StandardCode {
-        StandardErrorCode(String name) {
-            super(name);
-        }
-    }
-
-    static class ExceptionErrorAttribute extends ErrorAttribute implements ExceptionAttribute {
-        ExceptionErrorAttribute(String name) {
-            super(name);
-        }
-    }
-
-    static class HttpErrorAttribute extends ErrorAttribute implements HttpAttribute {
-        HttpErrorAttribute(String name) {
-            super(name);
-        }
-    }
-
-    static class GroupErrorAttribute extends ErrorAttribute implements GroupAttribute {
-        GroupErrorAttribute(String name) {
-            super(name);
-        }
-    }
 }

@@ -93,33 +93,5 @@ public interface HealthCheck extends HasGroup, HasId, Ordered {
      */
     interface Result {
 
-        /**
-         * The {@link HealthCheck} associated to this response.
-         */
-        HealthCheck getCheck();
-
-        /**
-         * The state of the service.
-         */
-        State getState();
-
-        /**
-         * A message associated to the result, used to provide more information
-         * for unhealthy services.
-         */
-        Optional<String> getMessage();
-
-        /**
-         * An error associated to the result, used to provide the error associated
-         * to unhealthy services.
-         */
-        Optional<Throwable> getError();
-
-        /**
-         * An key/value combination of details.
-         *
-         * @return a non null details map
-         */
-        Map<String, Object> getDetails();
     }
 }

@@ -45,36 +45,6 @@ class MethodBodySourceCodeEmitter implements CodeEmitter<MethodSpec> {
     }
 
     @Override
-    public CodeEmitter<MethodSpec> emit(final String method, final Object... args) {
-        final boolean hasArgs = args != null && args.length > 0;
-
-        final int indent = indentLevelOf(method);
-
-        if (!first) {
-            builder.addCode("\n");
-        }
-
-        builder.addCode(String.join("", Collections.nCopies(indentStack.peek(), "$<")));
-        builder.addCode(String.join("", Collections.nCopies(indent, "$>")));
-
-        if (!first) {
-            builder.addCode(".");
-        }
-
-        indentStack.push(indent);
-
-        if (hasArgs) {
-            builder.addCode("$L(" + invocationLiteralsFor(args) + ")", extend(method, argumentsFor(args)));
-        } else {
-            builder.addCode("$L()", method);
-        }
-
-        first = false;
-
-        return this;
-    }
-
-    @Override
     public MethodSpec result() {
         builder.addCode(String.join("", Collections.nCopies(indentStack.peek(), "$<")));
         builder.addCode(";\n");

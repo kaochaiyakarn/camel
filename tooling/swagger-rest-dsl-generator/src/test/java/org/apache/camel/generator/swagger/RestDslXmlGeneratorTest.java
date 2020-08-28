@@ -60,22 +60,6 @@ public class RestDslXmlGeneratorTest {
     }
 
     @Test
-    public void shouldGenerateXmlWithDefaultnamespace() throws Exception {
-        final CamelContext context = new DefaultCamelContext();
-
-        final String xml = RestDslGenerator.toXml(swagger).generate(context);
-
-        final DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-        builderFactory.setNamespaceAware(true);
-
-        final DocumentBuilder builder = builderFactory.newDocumentBuilder();
-
-        final Document document = builder.parse(new InputSource(new StringReader(xml)));
-
-        assertThat(document.isDefaultNamespace("http://camel.apache.org/schema/spring")).isTrue();
-    }
-
-    @Test
     public void shouldGenerateXmlWithDefaults() throws Exception {
         final CamelContext context = new DefaultCamelContext();
 

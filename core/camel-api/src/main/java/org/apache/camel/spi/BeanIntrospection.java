@@ -134,28 +134,6 @@ public interface BeanIntrospection extends StaticService, AfterPropertiesConfigu
     long getCachedClassesCounter();
 
     /**
-     * Gets the property or else returning the default value.
-     *
-     * @param target         the target bean
-     * @param propertyName   the property name
-     * @param defaultValue   the default value
-     * @param ignoreCase     whether to ignore case for matching the property name
-     * @return the property value, or the default value if the target does not have a property with the given name
-     */
-    Object getOrElseProperty(Object target, String propertyName, Object defaultValue, boolean ignoreCase);
-
-    /**
-     * Gets the getter method for the property.
-     *
-     * @param type            the target class
-     * @param propertyName    the property name
-     * @param ignoreCase      whether to ignore case for matching the property name
-     * @return                the getter method
-     * @throws NoSuchMethodException  is thrown if there are no getter method for the property
-     */
-    Method getPropertyGetter(Class<?> type, String propertyName, boolean ignoreCase) throws NoSuchMethodException;
-
-    /**
      * This method supports three modes to set a property:
      *
      * 1. Setting a Map property where the property name refers to a map via name[aKey] where aKey is the map key to use.

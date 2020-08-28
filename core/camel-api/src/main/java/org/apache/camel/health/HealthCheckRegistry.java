@@ -79,15 +79,6 @@ public interface HealthCheckRegistry extends CamelContextAware, StaticService, I
     }
 
     /**
-     * Returns the check identified by the given <code>id</code> if available.
-     */
-    default Optional<HealthCheck> getCheck(String id) {
-        return stream()
-            .filter(r -> ObjectHelper.equal(r.getId(), id) || ObjectHelper.equal(r.getId().replace("-health-check", ""), id))
-            .findFirst();
-    }
-
-    /**
      * Returns the repository identified by the given <code>id</code> if available.
      */
     Optional<HealthCheckRepository> getRepository(String id);

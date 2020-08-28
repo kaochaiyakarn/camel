@@ -81,21 +81,6 @@ public class RestDslXmlGenerator extends RestDslGenerator<RestDslXmlGenerator> {
             element.removeAttribute("customId");
         }
 
-        if (restComponent != null) {
-            final Element configuration = document.createElement("restConfiguration");
-            configuration.setAttribute("component", restComponent);
-
-            if (restContextPath != null) {
-                configuration.setAttribute("contextPath", restContextPath);
-            }
-
-            if (ObjectHelper.isNotEmpty(apiContextPath)) {
-                configuration.setAttribute("apiContextPath", apiContextPath);
-            }
-
-            root.insertBefore(configuration, root.getFirstChild());
-        }
-
         final TransformerFactory transformerFactory = TransformerFactory.newInstance();
         transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, Boolean.TRUE);
         final Transformer transformer = transformerFactory.newTransformer();
