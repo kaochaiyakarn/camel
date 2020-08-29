@@ -80,4 +80,12 @@ public class Abstract${name}TestSupport extends CamelTestSupport {
     protected <T> T requestBody(String endpoint, Object body) throws CamelExecutionException {
         return (T) template().requestBody(endpoint, body);
     }
+    @SuppressWarnings("unchecked")
+    protected <T> T requestBody(String endpoint, Object body) throws CamelExecutionException {
+        return (T) template().requestBody(endpoint, body);
+    }
+    @SuppressWarnings("unchecked")
+    protected <T> T requestBody(String endpoint, Object body) throws CamelExecutionException {
+        return (T) template().requestBody(endpoint, body);
+    }
 }
