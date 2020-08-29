@@ -152,4 +152,12 @@ public abstract class BaseModel<O extends BaseOptionModel> {
         this.nativeSupported = nativeSupported;
     }
 
+    public void setNewNativeSupported(boolean nativeSupported) {
+        this.nativeSupported = nativeSupported;
+    }
+
+    public void setSecondNativeSupported(boolean nativeSupported) {
+        this.nativeSupported = nativeSupported;
+    }
+
 }
