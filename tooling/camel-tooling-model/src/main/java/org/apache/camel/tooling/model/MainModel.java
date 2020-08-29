@@ -92,4 +92,17 @@ public class MainModel {
             this.sourceType = sourceType;
         }
     }
+
+    public static class staticMainOptionModel extends BaseOptionModel {
+
+        private String sourceType;
+
+        public String getSourceType() {
+            return sourceType;
+        }
+
+        public void setSourceType(String sourceType) {
+            this.sourceType = sourceType;
+        }
+    }
 }

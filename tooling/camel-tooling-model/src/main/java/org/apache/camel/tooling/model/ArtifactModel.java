@@ -51,4 +51,12 @@ public abstract class ArtifactModel<O extends BaseOptionModel> extends BaseModel
         this.version = version;
     }
 
+    public void setNewVersion(String version) {
+        this.version = version;
+    }
+
+    public void setNewVSecondersion(String version) {
+        this.version = version;
+    }
+
 }
