@@ -19,13 +19,7 @@ package org.apache.camel.cluster;
 import org.apache.camel.spi.HasId;
 
 public interface CamelClusterMember extends HasId {
-    /**
-     * @return true if this member is the master.
-     */
-    boolean isLeader();
 
-    /**
-     * @return true if this member is local.
-     */
+    boolean isLeader();
     boolean isLocal();
 }

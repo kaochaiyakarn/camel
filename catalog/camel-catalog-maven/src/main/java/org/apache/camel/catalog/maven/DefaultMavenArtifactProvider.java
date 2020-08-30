@@ -47,24 +47,11 @@ public class DefaultMavenArtifactProvider implements MavenArtifactProvider {
     }
 
     @Override
-    public void setCacheDirectory(String directory) {
-        this.cacheDirectory = directory;
-    }
-
-    @Override
-    public void addMavenRepository(String name, String url) {
-        Map<String, Object> repo = new HashMap<>();
-        repo.put("name", name);
-        repo.put("root", url);
-        Grape.addResolver(repo);
-    }
-
-    @Override
     public Set<String> addArtifactToCatalog(CamelCatalog camelCatalog,
                                             String groupId, String artifactId, String version) {
         final Set<String> names = new LinkedHashSet<>();
 
-        try {
+    
             if (cacheDirectory != null) {
                 if (log) {
                     System.out.println("DEBUG: Using cache directory: " + cacheDirectory);
@@ -74,33 +61,25 @@ public class DefaultMavenArtifactProvider implements MavenArtifactProvider {
 
             Grape.setEnableAutoDownload(true);
 
-            try (final GroovyClassLoader classLoader = new GroovyClassLoader()) {
+            Map<String, Object> param = new HashMap<>();
+            param.put("classLoader", classLoader);
+            param.put("group", groupId);
+            param.put("module", artifactId);
+            param.put("version", version);
+            // no need to download transitive dependencies as we only need to check the component itself
+            param.put("validate", false);
+            param.put("transitive", false);
 
-                Map<String, Object> param = new HashMap<>();
-                param.put("classLoader", classLoader);
-                param.put("group", groupId);
-                param.put("module", artifactId);
-                param.put("version", version);
-                // no need to download transitive dependencies as we only need to check the component itself
-                param.put("validate", false);
-                param.put("transitive", false);
-
-                if (log) {
-                    System.out.println("Downloading " + groupId + ":" + artifactId + ":" + version);
-                }
-                Grape.grab(param);
-
-                // the classloader can load content from the downloaded JAR
-                if (camelCatalog != null) {
-                    scanCamelComponents(camelCatalog, classLoader, names);
-                }
-            }
-
-        } catch (Exception e) {
             if (log) {
-                System.out.println("WARN: Error during add components from artifact " + groupId + ":" + artifactId + ":" + version + " due " + e.getMessage());
+                System.out.println("Downloading " + groupId + ":" + artifactId + ":" + version);
             }
-        }
+            Grape.grab(param);
+
+            // the classloader can load content from the downloaded JAR
+            if (camelCatalog != null) {
+                scanCamelComponents(camelCatalog, classLoader, names);
+            }
+
 
         return names;
     }

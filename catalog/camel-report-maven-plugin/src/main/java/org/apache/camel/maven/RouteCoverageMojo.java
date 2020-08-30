@@ -379,7 +379,7 @@ public class RouteCoverageMojo extends AbstractExecMojo {
 
     // CHECKSTYLE:ON
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("checked")
     private String templateCoverageData(String fileName, String routeId, List<RouteCoverageNode> model, AtomicInteger notCovered) throws MojoExecutionException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream sw = new PrintStream(bos);

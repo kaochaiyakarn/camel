@@ -77,7 +77,7 @@ email lists, GitHub, chat
 
 Website: <http://camel.apache.org/>
 
-Github (source): <https://github.com/apache/camel>
+Github (source): <https://github.com/kaochaiyakarn/camel>
 
 Issue tracker: <https://issues.apache.org/jira/projects/CAMEL>
 

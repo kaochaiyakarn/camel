@@ -329,48 +329,6 @@ public final class RouteBuilderParser {
         }
     }
 
-    /**
-     * Parses the java source class to discover Camel routes with id's assigned.
-     *
-     * @param clazz                   the java source class
-     * @param baseDir                 the base of the source code
-     * @param fullyQualifiedFileName  the fully qualified source code file name
-     * @param routes                  list to add discovered and parsed routes
-     */
-    public static void parseRouteBuilderRouteIds(JavaClassSource clazz, String baseDir, String fullyQualifiedFileName,
-                                                 List<CamelRouteDetails> routes) {
-
-        MethodSource<JavaClassSource> method = CamelJavaParserHelper.findConfigureMethod(clazz);
-        if (method != null) {
-            List<ParserResult> expressions = CamelJavaParserHelper.parseCamelRouteIds(method);
-            for (ParserResult result : expressions) {
-                // route ids is assigned in java dsl using the routeId method
-                if (result.isParsed()) {
-                    String fileName = fullyQualifiedFileName;
-                    if (fileName.startsWith(baseDir)) {
-                        fileName = fileName.substring(baseDir.length() + 1);
-                    }
-
-                    CamelRouteDetails detail = new CamelRouteDetails();
-                    detail.setFileName(fileName);
-                    detail.setClassName(clazz.getQualifiedName());
-                    detail.setMethodName("configure");
-                    int line = findLineNumber(clazz.toUnformattedString(), result.getPosition());
-                    if (line > -1) {
-                        detail.setLineNumber("" + line);
-                    }
-                    int endLine = findLineNumber(clazz.toUnformattedString(), result.getPosition() + result.getLength());
-                    if (endLine > -1) {
-                        detail.setLineNumberEnd("" + endLine);
-                    }
-                    detail.setRouteId(result.getElement());
-
-                    routes.add(detail);
-                }
-            }
-        }
-    }
-
     private static CamelEndpointDetails findEndpointByUri(List<CamelEndpointDetails> endpoints, String uri) {
         for (CamelEndpointDetails detail : endpoints) {
             if (uri.equals(detail.getEndpointUri())) {

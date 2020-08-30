@@ -16,12 +16,6 @@
  */
 package org.apache.camel.cloud;
 
-/**
- * A factory to create ServiceDiscovery
- *
- * @see ServiceFactory
- * @see ServiceDiscovery
- */
 @FunctionalInterface
 public interface ServiceDiscoveryFactory extends ServiceFactory<ServiceDiscovery> {
 }

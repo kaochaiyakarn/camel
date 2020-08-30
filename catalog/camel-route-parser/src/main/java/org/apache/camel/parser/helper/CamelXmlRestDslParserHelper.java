@@ -201,13 +201,6 @@ public final class CamelXmlRestDslParserHelper {
                 if (verb != null) {
                     verb.setTo(uri);
                 }
-            } else if ("toD".equals(xmlNode.getNodeName())) {
-                NamedNodeMap map = xmlNode.getAttributes();
-                String uri = extractAttribute(map, "uri");
-                RestVerbDetails verb = getLastVerb(detail);
-                if (verb != null) {
-                    verb.setToD(uri);
-                }
             }
         }
 
@@ -255,9 +248,7 @@ public final class CamelXmlRestDslParserHelper {
     }
 
     private static boolean isParentRest(Node node) {
-        if (node == null) {
-            return false;
-        }
+        
         String name = node.getNodeName();
         if ("rest".equals(name)) {
             return true;

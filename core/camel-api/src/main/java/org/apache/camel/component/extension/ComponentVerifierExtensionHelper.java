@@ -43,34 +43,6 @@ final class ComponentVerifierExtensionHelper {
             this.name = name;
         }
 
-        @Override
-        public String name() {
-            return name;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (!(o instanceof Code)) {
-                return false;
-            }
-
-            Code errorCode = (Code) o;
-
-            return name.equals(errorCode.name());
-        }
-
-        @Override
-        public int hashCode() {
-            return name.hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return name();
-        }
     }
 
     static class ErrorAttribute implements Attribute {
@@ -84,35 +56,6 @@ final class ComponentVerifierExtensionHelper {
             this.name = name;
         }
 
-        @Override
-        public String name() {
-            return name;
-        }
-
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (!(o instanceof Attribute)) {
-                return false;
-            }
-
-            Attribute that = (Attribute) o;
-
-            return name.equals(that.name());
-        }
-
-        @Override
-        public int hashCode() {
-            return name.hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return name();
-        }
     }
 
     // ===========================================================================================================

@@ -26,11 +26,5 @@ import java.util.List;
 @FunctionalInterface
 public interface ServiceChooser {
 
-    /**
-     * Chooses one of the service to use
-     *
-     * @param services  list of services
-     * @return the chosen service to use.
-     */
     ServiceDefinition choose(List<ServiceDefinition> services);
 }

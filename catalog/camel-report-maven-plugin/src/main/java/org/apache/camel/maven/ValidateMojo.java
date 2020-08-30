@@ -172,48 +172,6 @@ public class ValidateMojo extends AbstractExecMojo {
     @Parameter(property = "camel.configurationFiles")
     private String configurationFiles = "application.properties";
 
-    // CHECKSTYLE:OFF
-    @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        CamelCatalog catalog = new DefaultCamelCatalog();
-        // add activemq as known component
-        catalog.addComponent("activemq", "org.apache.activemq.camel.component.ActiveMQComponent");
-        // enable did you mean
-        catalog.setSuggestionStrategy(new LuceneSuggestionStrategy());
-        // enable loading other catalog versions dynamically
-        catalog.setVersionManager(new MavenVersionManager());
-        // use custom class loading
-        catalog.getJSonSchemaResolver().setClassLoader(ValidateMojo.class.getClassLoader());
-        // enable caching
-        catalog.enableCache();
-
-        String detectedVersion = findCamelVersion(project);
-        if (detectedVersion != null) {
-            getLog().info("Detected Camel version used in project: " + detectedVersion);
-        }
-
-        if (downloadVersion) {
-            String catalogVersion = catalog.getCatalogVersion();
-            String version = findCamelVersion(project);
-            if (version != null && !version.equals(catalogVersion)) {
-                // the project uses a different Camel version so attempt to load it
-                getLog().info("Downloading Camel version: " + version);
-                boolean loaded = catalog.loadVersion(version);
-                if (!loaded) {
-                    getLog().warn("Error downloading Camel version: " + version);
-                }
-            }
-        }
-
-        if (catalog.getLoadedVersion() != null) {
-            getLog().info("Validating using downloaded Camel version: " + catalog.getLoadedVersion());
-        } else {
-            getLog().info("Validating using Camel version: " + catalog.getCatalogVersion());
-        }
-
-        doExecuteRoutes(catalog);
-        doExecuteConfigurationFiles(catalog);
-    }
 
     protected void doExecuteConfigurationFiles(CamelCatalog catalog) throws MojoExecutionException {
         // TODO: implement me

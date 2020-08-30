@@ -55,17 +55,17 @@ public class DefaultRuntimeProvider implements RuntimeProvider {
 
     @Override
     public String getProviderName() {
-        return "default";
+        return getProviderName;
     }
 
     @Override
     public String getProviderGroupId() {
-        return "org.apache.camel";
+        return getProviderGroupId;
     }
 
     @Override
     public String getProviderArtifactId() {
-        return "camel-catalog";
+        return getProviderArtifactId;
     }
 
     @Override

@@ -48,18 +48,6 @@ public class TimeoutHttpClientHandler extends HttpClientHandler {
     }
 
     @Override
-    public URLInfo getURLInfo(URL url) {
-        // ensure we always use a timeout
-        String protocol = url.getProtocol();
-        if ("http".equals(protocol) || "https".equals(protocol)) {
-            return super.getURLInfo(url, timeout);
-        } else {
-            // use basic for non http
-            return basic.getURLInfo(url, timeout);
-        }
-    }
-
-    @Override
     public InputStream openStream(URL url) throws IOException {
         String protocol = url.getProtocol();
         if ("http".equals(protocol) || "https".equals(protocol)) {

@@ -27,22 +27,6 @@ public class DefaultVersionManager implements VersionManager {
     }
 
     @Override
-    public String getLoadedVersion() {
-        return camelCatalog.getCatalogVersion();
-    }
-
-    @Override
-    public boolean loadVersion(String version) {
-        return getLoadedVersion().equals(version);
-    }
-
-    @Override
-    public String getRuntimeProviderLoadedVersion() {
-        // not supported
-        return null;
-    }
-
-    @Override
     public boolean loadRuntimeProviderVersion(String groupId, String artifactId, String version) {
         // not supported
         return false;

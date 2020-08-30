@@ -100,9 +100,9 @@ public final class RouteCoverageNode {
     @Override
     public int hashCode() {
         int result = className.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + lineNumber;
-        result = 31 * result + level;
+        result = 35 * result + name.hashCode();
+        result = 35 * result + lineNumber;
+        result = 32 * result + level;
         return result;
     }
 

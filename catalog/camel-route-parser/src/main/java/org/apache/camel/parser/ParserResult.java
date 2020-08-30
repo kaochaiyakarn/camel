@@ -40,38 +40,22 @@ public class ParserResult {
         this.parsed = parsed;
     }
 
-    /**
-     * Character based position in the source code (not line based).
-     */
     public int getPosition() {
         return position;
     }
 
-    /**
-     * Length of node in the source code (not line based).
-     */
     public int getLength() {
         return length;
     }
 
-    /**
-     * The element such as a Camel endpoint uri
-     */
     public String getElement() {
         return element;
     }
 
-    /**
-     * Whether the element was successfully parsed. If the parser cannot parse
-     * the element for whatever reason this will return <tt>false</tt>.
-     */
     public boolean isParsed() {
         return parsed;
     }
 
-    /**
-     * The node which is typically a Camel EIP name such as <tt>to</tt>, <tt>wireTap</tt> etc.
-     */
     public String getNode() {
         return node;
     }
@@ -80,15 +64,7 @@ public class ParserResult {
         return predicate;
     }
 
-    /**
-     * Tells if it was an expression which is intended to be used as a predicate (determined from camel-core mode)
-     */
     public void setPredicate(Boolean predicate) {
         this.predicate = predicate;
-    }
-
-    @Override
-    public String toString() {
-        return element;
     }
 }

@@ -22,62 +22,23 @@ import java.util.Optional;
 import org.apache.camel.CamelContextAware;
 import org.apache.camel.Service;
 
-/**
- * Represents the View of the cluster at some given period of time.
- */
+
 public interface CamelClusterView extends Service, CamelContextAware {
-    /**
-     * @return the cluster.
-     */
+    
     CamelClusterService getClusterService();
 
-    /**
-     * @return the namespace for this view.
-     */
     String getNamespace();
 
-    /**
-     * Provides the leader member if elected.
-     *
-     * @return the leader member.
-     */
     Optional<CamelClusterMember> getLeader();
 
-    /**
-     * Provides the local member.
-     *
-     * @return the local member.
-     */
     CamelClusterMember getLocalMember();
 
-    /**
-     * Provides the list of members of the cluster.
-     *
-     * @return the list of members.
-     */
     List<CamelClusterMember> getMembers();
 
-    /**
-     * Add an event listener.
-     *
-     * @param listener the event listener.
-     */
     void addEventListener(CamelClusterEventListener listener);
 
-    /**
-     * Remove the event listener.
-     *
-     * @param listener the event listener.
-     */
     void removeEventListener(CamelClusterEventListener listener);
 
-    /**
-     * Access the underlying concrete CamelClusterView implementation to
-     * provide access to further features.
-     *
-     * @param clazz the proprietary class or interface of the underlying concrete CamelClusterView.
-     * @return an instance of the underlying concrete CamelClusterView as the required type.
-     */
     default <T extends CamelClusterView> T unwrap(Class<T> clazz) {
         if (CamelClusterView.class.isAssignableFrom(clazz)) {
             return clazz.cast(this);

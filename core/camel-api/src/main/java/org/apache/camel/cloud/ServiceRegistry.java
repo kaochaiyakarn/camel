@@ -28,41 +28,17 @@ import org.apache.camel.spi.IdAware;
 
 public interface ServiceRegistry extends Service, CamelContextAware, IdAware, Ordered {
 
-    @Override
-    default int getOrder() {
-        return Ordered.LOWEST;
-    }
-
-    /**
-     * Attributes associated to the service.
-     */
     default Map<String, Object> getAttributes() {
         return Collections.emptyMap();
     }
 
-    /**
-     * Register the service definition.
-     *
-     * @param definition the service definition
-     */
     void register(ServiceDefinition definition);
 
-
-    /**
-     * Remove the service definition.
-     *
-     * @param definition the service definition
-     */
     void deregister(ServiceDefinition definition);
 
-    /**
-     * A selector used to pick up a service among a list.
-     */
     @FunctionalInterface
     interface Selector {
-        /**
-         * Select a specific ServiceRegistry instance among a collection.
-         */
+        
         Optional<ServiceRegistry> select(Collection<ServiceRegistry> services);
     }
 }

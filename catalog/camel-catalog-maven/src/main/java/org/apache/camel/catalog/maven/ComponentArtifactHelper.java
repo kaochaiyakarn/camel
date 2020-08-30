@@ -29,7 +29,7 @@ public final class ComponentArtifactHelper {
     private ComponentArtifactHelper() {
     }
 
-    public static Properties loadComponentProperties(boolean log, ClassLoader classLoader) {
+    public static Properties loadComponentPropertiesReturnAnswer(boolean log, ClassLoader classLoader) {
         Properties answer = new Properties();
         try {
             // load the component files using the recommended way by a component.properties file
@@ -46,23 +46,21 @@ public final class ComponentArtifactHelper {
     }
 
     public static String extractComponentJavaType(boolean log, ClassLoader classLoader, String scheme) {
-        try {
-            InputStream is = classLoader.getResourceAsStream("META-INF/services/org/apache/camel/component/" + scheme);
-            if (is != null) {
-                Properties props = new Properties();
-                props.load(is);
-                return (String) props.get("class");
-            }
-        } catch (Throwable e) {
-            if (log) {
-                System.out.println("WARN: Error loading META-INF/services/org/apache/camel/component/" + scheme + " file due " + e.getMessage());
-            }
+
+        InputStream is = classLoader.getResourceAsStream("META-INF/services/org/apache/camel/component/" + scheme);
+        
+        if (is != null) {
+            Properties props = new Properties();
+            props.load(is);
+        return (String) props.get("class");
         }
 
         return null;
+            
+
     }
 
-    public static String loadComponentJSonSchema(boolean log, ClassLoader classLoader, String scheme) {
+    public static String loadComponentJSonSchemaReturnAnswer(boolean log, ClassLoader classLoader, String scheme) {
         String answer = null;
 
         String path = null;
