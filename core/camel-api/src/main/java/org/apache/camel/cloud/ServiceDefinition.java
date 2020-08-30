@@ -38,39 +38,18 @@ public interface ServiceDefinition {
     String SERVICE_META_PROTOCOL = "service.protocol";
     String SERVICE_META_PATH = "service.path";
 
-    /**
-     * Gets the service id.
-     */
     String getId();
 
-    /**
-     * Gets the service name.
-     */
     String getName();
 
-    /**
-     * Gets the IP or hostname of the server hosting the service.
-     */
     String getHost();
 
-    /**
-     * Gets the port number of the server hosting the service.
-     */
     int getPort();
 
-    /**
-     * Gets the health.
-     */
     ServiceHealth getHealth();
 
-    /**
-     * Gets a key/value metadata associated with the service.
-     */
     Map<String, String> getMetadata();
 
-    /**
-     * Check if a service definition matches.
-     */
     default boolean matches(ServiceDefinition other) {
         if (this.equals(other)) {
             return true;

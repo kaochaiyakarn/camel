@@ -46,20 +46,15 @@ public class LuceneSuggestionStrategy implements SuggestionStrategy {
         }
         StringReader reader = new StringReader(sb.toString());
 
-        try {
-            PlainTextDictionary words = new PlainTextDictionary(reader);
+        PlainTextDictionary words = new PlainTextDictionary(reader);
 
-            // use in-memory lucene spell checker to make the suggestions
-            ByteBuffersDirectory dir = new ByteBuffersDirectory();
-            checker = new SpellChecker(dir);
-            checker.indexDictionary(words, new IndexWriterConfig(new KeywordAnalyzer()), false);
+        // use in-memory lucene spell checker to make the suggestions
+        ByteBuffersDirectory dir = new ByteBuffersDirectory();
+        checker = new SpellChecker(dir);
+        checker.indexDictionary(words, new IndexWriterConfig(new KeywordAnalyzer()), false);
 
-            return checker.suggestSimilar(unknownOption, maxSuggestions);
-        } catch (Exception e) {
-            // ignore
-        }
+        return checker.suggestSimilar(unknownOption, maxSuggestions);
 
-        return null;
     }
 
 }

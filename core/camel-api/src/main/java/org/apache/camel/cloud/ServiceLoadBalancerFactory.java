@@ -16,12 +16,6 @@
  */
 package org.apache.camel.cloud;
 
-/**
- * A factory to create LoadBalancer
- *
- * @see ServiceFactory
- * @see ServiceLoadBalancer
- */
 @FunctionalInterface
 public interface ServiceLoadBalancerFactory extends ServiceFactory<ServiceLoadBalancer> {
 }

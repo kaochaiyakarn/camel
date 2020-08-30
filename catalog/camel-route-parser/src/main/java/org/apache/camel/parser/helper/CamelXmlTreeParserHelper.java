@@ -108,8 +108,14 @@ public final class CamelXmlTreeParserHelper {
     }
 
     private boolean hasInput(String name) {
+    
         String json = camelCatalog.modelJSonSchema(name);
-        return JsonMapper.generateEipModel(json).isInput();
+        
+        if(json != null){
+            return JsonMapper.generateEipModel(json).isInput();
+        }
+
+        return null;
     }
 
 }

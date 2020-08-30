@@ -23,9 +23,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Details result of validating endpoint uri.
- */
 public class EndpointValidationResult extends PropertiesValidationResult implements Serializable {
 
     private final String uri;
@@ -105,14 +102,6 @@ public class EndpointValidationResult extends PropertiesValidationResult impleme
         return summaryErrorMessage(includeHeader, true, false);
     }
 
-    /**
-     * A human readable summary of the validation errors.
-     *
-     * @param includeHeader    whether to include a header
-     * @param ignoreDeprecated whether to ignore deprecated options in use as an error or not
-     * @param includeWarnings  whether to include warnings as an error or not
-     * @return the summary, or <tt>null</tt> if no validation errors
-     */
     public String summaryErrorMessage(boolean includeHeader, boolean ignoreDeprecated, boolean includeWarnings) {
         boolean ok = isSuccess();
 

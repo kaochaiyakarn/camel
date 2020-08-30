@@ -25,32 +25,14 @@ public interface CamelClusterEventListener {
 
     interface Leadership extends CamelClusterEventListener {
 
-        /**
-         * Notify a change in the leadership for a particular cluster.
-         *
-         * @param view the cluster view
-         * @param leader the optional new leader
-         */
         void leadershipChanged(CamelClusterView view, Optional<CamelClusterMember> leader);
 
     }
 
     interface Membership extends CamelClusterEventListener {
 
-        /**
-         * Notify a change (addition) in the cluster composition.
-         *
-         * @param view the cluster view
-         * @param member the member that has been added
-         */
         void memberAdded(CamelClusterView view, CamelClusterMember member);
 
-        /**
-         * Notify a change (removal) in the cluster composition.
-         *
-         * @param view the cluster view
-         * @param member the member that has been removed
-         */
         void memberRemoved(CamelClusterView view, CamelClusterMember member);
 
     }

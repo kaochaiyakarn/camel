@@ -81,7 +81,7 @@ public class CamelRouteDetails {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        else if (o == null || getClass() != o.getClass()) {
             return false;
         }
 
@@ -90,32 +90,33 @@ public class CamelRouteDetails {
         if (!fileName.equals(that.fileName)) {
             return false;
         }
-        if (lineNumber != null ? !lineNumber.equals(that.lineNumber) : that.lineNumber != null) {
+        else if (lineNumber != null ? !lineNumber.equals(that.lineNumber) : that.lineNumber != null) {
             return false;
         }
-        if (lineNumberEnd != null ? !lineNumberEnd.equals(that.lineNumberEnd) : that.lineNumberEnd != null) {
+        else if (lineNumberEnd != null ? !lineNumberEnd.equals(that.lineNumberEnd) : that.lineNumberEnd != null) {
             return false;
         }
-        if (className != null ? !className.equals(that.className) : that.className != null) {
+        else if (className != null ? !className.equals(that.className) : that.className != null) {
             return false;
         }
-        if (methodName != null ? !methodName.equals(that.methodName) : that.methodName != null) {
+        else if (methodName != null ? !methodName.equals(that.methodName) : that.methodName != null) {
             return false;
         }
-        if (routeId != null ? !routeId.equals(that.routeId) : that.routeId != null) {
+        else if (routeId != null ? !routeId.equals(that.routeId) : that.routeId != null) {
             return false;
         }
-        return true;
+        else 
+            return true;
     }
 
     @Override
     public int hashCode() {
         int result = fileName.hashCode();
-        result = 31 * result + (lineNumber != null ? lineNumber.hashCode() : 0);
-        result = 31 * result + (lineNumberEnd != null ? lineNumberEnd.hashCode() : 0);
-        result = 31 * result + (className != null ? className.hashCode() : 0);
-        result = 31 * result + (methodName != null ? methodName.hashCode() : 0);
-        result = 31 * result + (routeId != null ? routeId.hashCode() : 0);
+        result = 33 * result + (lineNumber != null ? lineNumber.hashCode() : 0);
+        result = 33 * result + (lineNumberEnd != null ? lineNumberEnd.hashCode() : 0);
+        result = 33 * result + (className != null ? className.hashCode() : 0);
+        result = 33 * result + (methodName != null ? methodName.hashCode() : 0);
+        result = 33 * result + (routeId != null ? routeId.hashCode() : 0);
         return result;
     }
 

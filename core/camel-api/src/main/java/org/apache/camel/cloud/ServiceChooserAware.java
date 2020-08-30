@@ -22,17 +22,7 @@ package org.apache.camel.cloud;
  */
 public interface ServiceChooserAware {
 
-    /**
-     * Injects the {@link ServiceChooser}
-     *
-     * @param serviceChooser the ServiceChooser
-     */
     void setServiceChooser(ServiceChooser serviceChooser);
 
-    /**
-     * Get the {@link ServiceChooser}
-     *
-     * @return the ServiceChooser
-     */
     ServiceChooser getServiceChooser();
 }

@@ -16,12 +16,6 @@
  */
 package org.apache.camel.cloud;
 
-/**
- * A factory to create ServiceFilter
- *
- * @see ServiceFactory
- * @see ServiceFilter
- */
 @FunctionalInterface
 public interface ServiceFilterFactory extends ServiceFactory<ServiceFilter> {
 }

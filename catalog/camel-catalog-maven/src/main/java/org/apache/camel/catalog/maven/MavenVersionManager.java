@@ -91,35 +91,6 @@ public class MavenVersionManager implements VersionManager, Closeable {
     }
 
     @Override
-    public boolean loadVersion(String version) {
-        try {
-            URLHandlerRegistry.setDefault(httpClient);
-
-            if (cacheDirectory != null) {
-                System.setProperty("grape.root", cacheDirectory);
-            }
-
-            Grape.setEnableAutoDownload(true);
-
-            Map<String, Object> param = new HashMap<>();
-            param.put("classLoader", classLoader);
-            param.put("group", "org.apache.camel");
-            param.put("module", "camel-catalog");
-            param.put("version", version);
-
-            Grape.grab(param);
-
-            this.version = version;
-            return true;
-        } catch (Exception e) {
-            if (log) {
-                System.out.print("WARN: Cannot load version " + version + " due " + e.getMessage());
-            }
-            return false;
-        }
-    }
-
-    @Override
     public String getRuntimeProviderLoadedVersion() {
         return runtimeProviderVersion;
     }
@@ -147,26 +118,6 @@ public class MavenVersionManager implements VersionManager, Closeable {
             }
             return false;
         }
-    }
-
-    @Override
-    public InputStream getResourceAsStream(String name) {
-        InputStream is = null;
-
-        if (runtimeProviderVersion != null) {
-            is = doGetResourceAsStream(name, runtimeProviderVersion);
-        }
-        if (is == null && version != null) {
-            is = doGetResourceAsStream(name, version);
-        }
-        if (is == null) {
-            is = MavenVersionManager.class.getClassLoader().getResourceAsStream(name);
-        }
-        if (is == null) {
-            is = classLoader.getResourceAsStream(name);
-        }
-
-        return is;
     }
 
     private InputStream doGetResourceAsStream(String name, String version) {

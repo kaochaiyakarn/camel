@@ -18,12 +18,6 @@ package org.apache.camel.cloud;
 
 import org.apache.camel.Expression;
 
-/**
- * A factory to create Expression
- *
- * @see ServiceFactory
- * @see Expression
- */
 @FunctionalInterface
 public interface ServiceExpressionFactory extends ServiceFactory<Expression> {
 }

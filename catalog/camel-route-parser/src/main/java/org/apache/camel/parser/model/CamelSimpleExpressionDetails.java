@@ -117,9 +117,4 @@ public class CamelSimpleExpressionDetails {
     public void setExpression(boolean expression) {
         this.expression = expression;
     }
-
-    @Override
-    public String toString() {
-        return simple;
-    }
 }

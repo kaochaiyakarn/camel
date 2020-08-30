@@ -22,17 +22,7 @@ package org.apache.camel.cloud;
  */
 public interface ServiceDiscoveryAware {
 
-    /**
-     * Injects the {@link ServiceDiscovery}
-     *
-     * @param serviceDiscovery the ServiceDiscovery
-     */
     void setServiceDiscovery(ServiceDiscovery serviceDiscovery);
 
-    /**
-     * Get the {@link ServiceDiscovery}
-     *
-     * @return the ServiceDiscovery
-     */
     ServiceDiscovery getServiceDiscovery();
 }

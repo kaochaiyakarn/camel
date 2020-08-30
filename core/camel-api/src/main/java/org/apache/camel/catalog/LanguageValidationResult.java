@@ -18,9 +18,6 @@ package org.apache.camel.catalog;
 
 import java.io.Serializable;
 
-/**
- * Validation result of parsing a language expression or predicate
- */
 public class LanguageValidationResult implements Serializable {
     private final String text;
     private String error;

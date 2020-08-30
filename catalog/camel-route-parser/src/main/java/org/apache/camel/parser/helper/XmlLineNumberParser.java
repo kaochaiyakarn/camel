@@ -116,21 +116,6 @@ public final class XmlLineNumberParser {
             private final Map<String, String> anonymousNs = new LinkedHashMap<>();
 
             @Override
-            public void setDocumentLocator(final Locator locator) {
-                this.locator = locator; // Save the locator, so that it can be used later for line tracking when traversing nodes.
-                this.found = rootNames == null;
-            }
-
-            private boolean isRootName(String qName) {
-                for (String root : rootNames.split(",")) {
-                    if (qName.equals(root)) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            @Override
             public void startElement(final String uri, final String localName, final String qName, final Attributes attributes) throws SAXException {
                 addTextIfNeeded();
 

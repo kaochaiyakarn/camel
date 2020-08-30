@@ -20,8 +20,6 @@ import org.apache.camel.CamelContext;
 
 @FunctionalInterface
 public interface ServiceFactory<T> {
-    /**
-     * Creates an instance of a service.
-     */
+    
     T newInstance(CamelContext camelContext) throws Exception;
 }

@@ -16,12 +16,5 @@
  */
 package org.apache.camel.cloud;
 
-/**
- * A factory to create ServiceChooser
- *
- * @see ServiceFactory
- * @see ServiceChooser
- */
-@FunctionalInterface
 public interface ServiceChooserFactory extends ServiceFactory<ServiceChooser> {
 }
